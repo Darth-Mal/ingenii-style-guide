@@ -198,16 +198,16 @@ const slides = [
     title: "",
     img: "/female8.jpeg",
   },
-  {
-    type: "image",
-    title: "",
-    vid: "/vid2.mov",
-  },
 
   {
     type: "image",
     title: "",
     img: "/female9.jpeg",
+  },
+  {
+    type: "image",
+    title: "",
+    vid: "/vid2.mov",
   },
   {
     type: "image",
