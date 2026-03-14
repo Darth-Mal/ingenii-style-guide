@@ -272,7 +272,7 @@ export default function Home() {
           {slide.img && (
             <img
               src={slide.img}
-              alt={slide.title}
+              // alt={slide.title}
               className="w-full h-full object-cover"
             />
           )}
@@ -281,7 +281,7 @@ export default function Home() {
           {slide.vid && (
             <video
               src={slide.vid}
-              alt={slide.title}
+              // alt={slide.title}
               className="w-full h-full object-cover"
               autoPlay
               muted
