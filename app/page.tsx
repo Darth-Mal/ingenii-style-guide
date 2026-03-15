@@ -5,6 +5,10 @@ import { useSwipeable } from "react-swipeable";
 import { ArrowRightIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const MEN_INDEX = 4;
+const WOMEN_INDEX = 19;
+const DONTS_INDEX = 36;
+
 const slides = [
   {
     type: "intro",
@@ -33,6 +37,7 @@ const slides = [
       <div className="w-full h-[600px] absolute bottom-0 z-10 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
     ),
   },
+
   {
     type: "image",
     title: (
@@ -51,6 +56,7 @@ const slides = [
       <div className="w-full h-[600px] absolute bottom-0 z-10 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
     ),
   },
+
   {
     type: "image",
     title: (
@@ -113,6 +119,21 @@ const slides = [
   { type: "image", title: "", img: "/female10.jpeg" },
   { type: "image", title: "", img: "/female11.jpeg" },
 
+  /* -------- DON’TS SECTION -------- */
+
+  {
+    type: "image",
+    title: <h1 className="text-red-500 text-[60px]">DON'TS</h1>,
+    img: "",
+  },
+
+  { type: "image", title: "", img: "/dont1.jpg" },
+  { type: "image", title: "", img: "/dont2.jpg" },
+  { type: "image", title: "", img: "/dont3.jpg" },
+  { type: "image", title: "", img: "/dont4.jpg" },
+
+  /* -------- END -------- */
+
   {
     type: "end",
   },
@@ -138,17 +159,8 @@ export default function Home() {
 
   const handlers = useSwipeable({
     onSwipedLeft: () =>
-      setCurrent((prev) => {
-        if (prev >= slides.length - 1) return prev;
-        return prev + 1;
-      }),
-
-    onSwipedRight: () =>
-      setCurrent((prev) => {
-        if (prev <= 0) return prev;
-        return prev - 1;
-      }),
-
+      setCurrent((prev) => (prev >= slides.length - 1 ? prev : prev + 1)),
+    onSwipedRight: () => setCurrent((prev) => (prev <= 0 ? prev : prev - 1)),
     trackMouse: true,
   });
 
@@ -167,8 +179,6 @@ export default function Home() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="w-full h-full absolute"
         >
-          {/* ENDING SLIDE */}
-
           {slide.type === "end" ? (
             <div className="w-full h-full flex flex-col items-center justify-center bg-black text-center px-6">
               <h2 className="text-white text-3xl mb-10">
@@ -252,8 +262,48 @@ export default function Home() {
 
               {slide.overlay && slide.overlay}
 
-              <div className="absolute bottom-10 left-4 text-white drop-shadow-lg z-20">
+              <div className="absolute bottom-10 left-4 text-white drop-shadow-lg z-20 max-w-xl">
                 <h2 className="text-lg">{slide.title}</h2>
+
+                {current === 3 && (
+                  <div className="flex gap-4 mt-6">
+                    <button
+                      onClick={() => setCurrent(MEN_INDEX)}
+                      className="px-6 py-3 bg-[#4eb2e5] text-black rounded-full font-semibold hover:scale-105 transition"
+                    >
+                      View Men's Guide
+                    </button>
+
+                    <button
+                      onClick={() => setCurrent(WOMEN_INDEX)}
+                      className="px-6 py-3 bg-white text-black rounded-full font-semibold hover:scale-105 transition"
+                    >
+                      View Women's Guide
+                    </button>
+                  </div>
+                )}
+
+                {current === MEN_INDEX && (
+                  <div className="mt-6">
+                    <button
+                      onClick={() => setCurrent(DONTS_INDEX)}
+                      className="px-6 py-3 bg-red-500 text-white rounded-full font-semibold hover:scale-105 transition"
+                    >
+                      See What NOT To Wear
+                    </button>
+                  </div>
+                )}
+
+                {current === WOMEN_INDEX && (
+                  <div className="mt-6">
+                    <button
+                      onClick={() => setCurrent(DONTS_INDEX)}
+                      className="px-6 py-3 bg-red-500 text-white rounded-full font-semibold hover:scale-105 transition"
+                    >
+                      See What NOT To Wear
+                    </button>
+                  </div>
+                )}
               </div>
 
               <ArrowRightIcon className="w-10 h-10 text-white absolute right-4 top-1/2 -translate-y-1/2 animate-bounce z-20" />
@@ -261,8 +311,6 @@ export default function Home() {
           )}
         </motion.div>
       </AnimatePresence>
-
-      {/* NAVIGATION DOTS */}
 
       <div className="absolute bottom-4 w-full flex justify-center gap-2">
         {slides.map((_, idx) => (
