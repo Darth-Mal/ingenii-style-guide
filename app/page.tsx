@@ -6,8 +6,8 @@ import { ArrowRightIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MEN_INDEX = 4;
-const WOMEN_INDEX = 19;
-const DONTS_INDEX = 36;
+const WOMEN_INDEX = 18;
+const DONTS_INDEX = 35;
 
 const slides = [
   {
@@ -127,10 +127,10 @@ const slides = [
     img: "",
   },
 
-  { type: "image", title: "", img: "/dont1.jpg" },
-  { type: "image", title: "", img: "/dont2.jpg" },
-  { type: "image", title: "", img: "/dont3.jpg" },
-  { type: "image", title: "", img: "/dont4.jpg" },
+  { type: "image", title: "", img: "/dont1.JPG" },
+  { type: "image", title: "", img: "/dont2.JPG" },
+  { type: "image", title: "", img: "/dont3.JPG" },
+  { type: "image", title: "", img: "/dont4.JPG" },
 
   /* -------- END -------- */
 
